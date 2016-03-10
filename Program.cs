@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace designIssueExample
 {
@@ -10,6 +6,14 @@ namespace designIssueExample
     {
         static void Main(string[] args)
         {
+            Yucky yucky = new Yucky();
+            var employees = yucky.GetEmployees(EmployeeFilterType.ByName, "T", new FakeSqlConnection());
+
+            foreach (Employee employee in employees)
+            {
+                Console.WriteLine(employee);
+            }
+
         }
     }
 }

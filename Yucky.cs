@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace designIssueExample
 {
@@ -14,7 +10,7 @@ namespace designIssueExample
         private const int EmployeeAgeColumnIndex = 2;
         private const int EmployeeIsSalariedColumnIndex = 3;
 
-        public IEnumerable<Employee> GetEmployees(EmployeeFilterType employeeFilterType, string filter, SqlConnection connection)
+        public IEnumerable<Employee> GetEmployees(EmployeeFilterType employeeFilterType, string filter, FakeSqlConnection connection)
         {
             if (employeeFilterType == EmployeeFilterType.ByName && filter == null)
             {
@@ -24,9 +20,9 @@ namespace designIssueExample
             string query = "select * from employee, employee_role inner join employee.Id == employee_role.EmployeeId";
 
             List<Employee> result = new List<Employee>();
-            using (SqlCommand sqlCommand = new SqlCommand(query, connection))
+            using (FakeSqlCommand sqlCommand = new FakeSqlCommand(query, connection))
             {
-                SqlDataReader reader;
+                FakeSqlDataReader reader;
                 int retryCount = 5;
 
                 while (true)

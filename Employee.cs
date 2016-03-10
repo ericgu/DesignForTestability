@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace designIssueExample
 {
     class Employee
@@ -12,5 +7,10 @@ namespace designIssueExample
         public string Name { get; set; }
         public int Age { get; set; }
         public bool IsSalaried { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("{0} {1} {2} {3}", Id, Name, Age, IsSalaried);
+        }
     }
 }

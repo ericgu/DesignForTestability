@@ -47,7 +47,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DesignForTestability\designIssueExample.csproj">
+    <ProjectReference Include="..\designIssueExample.csproj">
       <Project>{28D81E46-6E53-4588-B456-9963B7DCD032}</Project>
       <Name>designIssueExample</Name>
     </ProjectReference>

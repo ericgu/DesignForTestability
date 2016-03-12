@@ -1,7 +1,6 @@
-﻿using System;
-namespace designIssueExample
+﻿namespace designIssueExample
 {
-    class Employee
+    internal class Employee
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -10,7 +9,7 @@ namespace designIssueExample
 
         public override string ToString()
         {
-            return String.Format("{0} {1} {2} {3}", Id, Name, Age, IsSalaried);
+            return $"{Id} {Name} {Age} {IsSalaried}";
         }
     }
 }

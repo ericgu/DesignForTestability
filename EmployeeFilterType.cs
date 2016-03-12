@@ -1,6 +1,6 @@
 ﻿namespace designIssueExample
 {
-    enum EmployeeFilterType
+    internal enum EmployeeFilterType
     {
         ByName = 1,
         ExemptOnly = 2

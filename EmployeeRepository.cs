@@ -3,14 +3,22 @@ using System.Collections.Generic;
 
 namespace designIssueExample
 {
-    class Yucky
+    class EmployeeRepository
     {
         private const int EmployeeIdColumnIndex = 0;
         private const int EmployeeNameColumnIndex = 1;
         private const int EmployeeAgeColumnIndex = 2;
         private const int EmployeeIsSalariedColumnIndex = 3;
 
-        public IEnumerable<Employee> GetEmployees(EmployeeFilterType employeeFilterType, string filter, FakeSqlConnection connection)
+        private FakeSqlConnection _connection;
+
+        public EmployeeRepository(FakeSqlConnection connection)
+        {
+            this._connection = connection;
+        }
+
+
+        public IEnumerable<Employee> GetEmployees(EmployeeFilterType employeeFilterType, string filter)
         {
             if (employeeFilterType == EmployeeFilterType.ByName && filter == null)
             {
@@ -20,7 +28,7 @@ namespace designIssueExample
             string query = "select * from employee, employee_role inner join employee.Id == employee_role.EmployeeId";
 
             List<Employee> result = new List<Employee>();
-            using (FakeSqlCommand sqlCommand = new FakeSqlCommand(query, connection))
+            using (FakeSqlCommand sqlCommand = new FakeSqlCommand(query, _connection))
             {
                 FakeSqlDataReader reader;
                 int retryCount = 5;

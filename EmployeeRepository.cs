@@ -17,7 +17,6 @@ namespace designIssueExample
             _sqlDriver = sqlDriver;
         }
 
-
         public IEnumerable<Employee> GetEmployees(EmployeeFilterType employeeFilterType, string filter)
         {
             if (employeeFilterType == EmployeeFilterType.ByName && filter == null)

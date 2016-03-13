@@ -53,6 +53,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmployeeRepositoryTests.cs" />
     <Compile Include="SimulateFakeSql.cs" />
     <Compile Include="SimulateFakeSqlDriver.cs" />
     <Compile Include="CharacterizationTests.cs" />

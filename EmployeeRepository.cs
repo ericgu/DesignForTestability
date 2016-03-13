@@ -10,11 +10,11 @@ namespace designIssueExample
         private const int EmployeeAgeColumnIndex = 2;
         private const int EmployeeIsSalariedColumnIndex = 3;
 
-        private readonly FakeSqlConnection _connection;
+        private readonly FakeSqlDriver _sqlDriver;
 
-        public EmployeeRepository(FakeSqlConnection connection)
+        public EmployeeRepository(FakeSqlDriver sqlDriver)
         {
-            _connection = connection;
+            _sqlDriver = sqlDriver;
         }
 
 
@@ -27,24 +27,9 @@ namespace designIssueExample
 
             var query = "select * from employee, employee_role inner join employee.Id == employee_role.EmployeeId";
 
-            var result = new List<Employee>();
-            using (var sqlCommand = new FakeSqlCommand(query, _connection))
+            return _sqlDriver.BuildSqlCommand(new Query(query), reader =>
             {
-                FakeSqlDataReader reader;
-                var retryCount = 5;
-
-                while (true)
-                {
-                    try
-                    {
-                        reader = sqlCommand.ExecuteReader();
-                        break;
-                    }
-                    catch (Exception)
-                    {
-                        if (retryCount-- == 0) throw;
-                    }
-                }
+                var result = new List<Employee>();
 
                 while (reader.Read())
                 {
@@ -65,9 +50,8 @@ namespace designIssueExample
 
                     result.Add(new Employee {Name = name, Id = id, Age = age, IsSalaried = isSalaried});
                 }
-            }
-
-            return result;
+                return result;
+            });
         }
     }
 }

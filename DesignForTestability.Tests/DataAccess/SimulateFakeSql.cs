@@ -1,15 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using designIssueExample.DataAccess;
 
-namespace designIssueExample
+namespace designIssueExample.Tests.DataAccess
 {
-    public class FakeSqlConnection
+    public class SimulateFakeSqlConnection
     {
     }
 
-    public class FakeSqlCommand : IDisposable
+    public class SimulateFakeSqlCommand : IDisposable
     {
-        public FakeSqlCommand(string query, FakeSqlConnection connection)
+        public SimulateFakeSqlCommand(string query, SimulateFakeSqlConnection connection)
         {
 
         }
@@ -17,23 +18,24 @@ namespace designIssueExample
         {
         }
 
-        internal FakeSqlDataReader ExecuteReader()
+        internal SimulateFakeSqlDataReader ExecuteReader()
         {
-            return new FakeSqlDataReader();
+            return new SimulateFakeSqlDataReader();
         }
     }
 
-    public class FakeSqlDataReader : ISqlDataReader
+    public class SimulateFakeSqlDataReader : ISqlDataReader
     {
         List<object[]> m_data = new List<object[]>();
         object[] m_current;
 
-        public FakeSqlDataReader()
+        public SimulateFakeSqlDataReader()
         {
-            m_data.Add(new object[] { 35323, "Fred Flintstone", 42, true });
-            m_data.Add(new object[] { 35323, "Barney Rubble", 38, true });
-            m_data.Add(new object[] { 35323, "Ted theRed", 16, false });
-            m_data.Add(new object[] { 35323, "Tina Turnbull", 18, false });
+        }
+
+        public void SimulatorReplaceData(List<object[]> data)
+        {
+            m_data = data;
         }
 
         public bool Read()

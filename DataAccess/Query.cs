@@ -1,4 +1,4 @@
-﻿namespace designIssueExample
+﻿namespace designIssueExample.DataAccess
 {
     internal class Query
     {

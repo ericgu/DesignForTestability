@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace designIssueExample.Tests
+namespace designIssueExample.DataAccess
 {
-    public class SimulateFakeSqlConnection
+    public class FakeSqlConnection
     {
     }
 
-    public class SimulateFakeSqlCommand : IDisposable
+    public class FakeSqlCommand : IDisposable
     {
-        public SimulateFakeSqlCommand(string query, SimulateFakeSqlConnection connection)
+        public FakeSqlCommand(string query, FakeSqlConnection connection)
         {
 
         }
@@ -17,24 +17,23 @@ namespace designIssueExample.Tests
         {
         }
 
-        internal SimulateFakeSqlDataReader ExecuteReader()
+        internal FakeSqlDataReader ExecuteReader()
         {
-            return new SimulateFakeSqlDataReader();
+            return new FakeSqlDataReader();
         }
     }
 
-    public class SimulateFakeSqlDataReader : ISqlDataReader
+    public class FakeSqlDataReader : ISqlDataReader
     {
         List<object[]> m_data = new List<object[]>();
         object[] m_current;
 
-        public SimulateFakeSqlDataReader()
+        public FakeSqlDataReader()
         {
-        }
-
-        public void SimulatorReplaceData(List<object[]> data)
-        {
-            m_data = data;
+            m_data.Add(new object[] { 35323, "Fred Flintstone", 42, true });
+            m_data.Add(new object[] { 35323, "Barney Rubble", 38, true });
+            m_data.Add(new object[] { 35323, "Ted theRed", 16, false });
+            m_data.Add(new object[] { 35323, "Tina Turnbull", 18, false });
         }
 
         public bool Read()

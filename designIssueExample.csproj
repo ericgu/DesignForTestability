@@ -41,16 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\EmployeeRepository.cs" />
+    <Compile Include="DataAccess\FakeSql.cs" />
+    <Compile Include="DataAccess\FakeSqlDriver.cs" />
+    <Compile Include="DataAccess\ISqlDataReader.cs" />
+    <Compile Include="DataAccess\ISqlDriver.cs" />
+    <Compile Include="DataAccess\Query.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeeFilterType.cs" />
-    <Compile Include="FakeSql.cs" />
-    <Compile Include="FakeSqlDriver.cs" />
-    <Compile Include="ISqlDriver.cs" />
-    <Compile Include="ISqlDataReader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EmployeeRepository.cs" />
-    <Compile Include="Query.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

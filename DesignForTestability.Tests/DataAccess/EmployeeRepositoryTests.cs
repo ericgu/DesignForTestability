@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using designIssueExample.DataAccess;
 using NUnit.Framework;
 
-namespace designIssueExample.Tests
+namespace designIssueExample.Tests.DataAccess
 {
     [TestFixture]
     internal class EmployeeRepositoryTests

@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using designIssueExample.DataAccess;
 
-namespace designIssueExample.Tests
+namespace designIssueExample.Tests.DataAccess
 {
     internal class SimulateFakeSqlDriver : ISqlDriver
     {

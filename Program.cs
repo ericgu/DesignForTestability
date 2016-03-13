@@ -1,4 +1,5 @@
 ﻿using System;
+using designIssueExample.DataAccess;
 
 namespace designIssueExample
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace designIssueExample
+namespace designIssueExample.DataAccess
 {
     internal class EmployeeRepository
     {

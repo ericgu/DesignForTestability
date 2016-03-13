@@ -5,6 +5,7 @@ using NUnit.Framework;
 namespace designIssueExample.Tests
 {
     [TestFixture]
+    [Category("slow test")]
     internal class VerifySimulateFakeSqlTests
     {
         [Test]

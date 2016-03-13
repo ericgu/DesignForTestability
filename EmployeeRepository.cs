@@ -10,9 +10,9 @@ namespace designIssueExample
         private const int EmployeeAgeColumnIndex = 2;
         private const int EmployeeIsSalariedColumnIndex = 3;
 
-        private readonly FakeSqlDriver _sqlDriver;
+        private readonly ISqlDriver _sqlDriver;
 
-        public EmployeeRepository(FakeSqlDriver sqlDriver)
+        public EmployeeRepository(ISqlDriver sqlDriver)
         {
             _sqlDriver = sqlDriver;
         }

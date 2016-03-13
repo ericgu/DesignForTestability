@@ -45,10 +45,12 @@
     <Compile Include="EmployeeFilterType.cs" />
     <Compile Include="FakeSql.cs" />
     <Compile Include="FakeSqlDriver.cs" />
+    <Compile Include="ISqlDriver.cs" />
     <Compile Include="ISqlDataReader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EmployeeRepository.cs" />
+    <Compile Include="Query.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

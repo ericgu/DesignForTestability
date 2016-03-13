@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace designIssueExample
 {
-    internal class FakeSqlDriver
+    internal class FakeSqlDriver : ISqlDriver
     {
-        private FakeSqlConnection _connection;
+        private readonly FakeSqlConnection _connection;
         public FakeSqlDriver()
         {
             _connection = new FakeSqlConnection();
         }
 
-        public List<Employee> BuildSqlCommand(Query query, Func<ISqlDataReader, List<Employee>> readFromSqlResult ,int retry = 5)
+        public List<Employee> BuildSqlCommand(Query query, Func<ISqlDataReader, List<Employee>> load ,int retry = 5)
         {
 
-            var result = new List<Employee>();
+            List<Employee> result;
             using (var sqlCommand = new FakeSqlCommand(query.Value, _connection))
             {
                 ISqlDataReader reader;
@@ -35,19 +35,10 @@ namespace designIssueExample
                         if (retryCount-- == 0) throw;
                     }
                 }
-                result = readFromSqlResult(reader);
+                result = load(reader);
             }
             return result;
         }
 
-    }
-
-    internal class Query
-    {
-        public string Value { get; }
-        public Query( string value )
-        {
-            Value = value;
-        }
     }
 }

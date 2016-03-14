@@ -1,19 +1,19 @@
 ﻿using System;
+using designIssueExample.DataAccess;
 
 namespace designIssueExample
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Yucky yucky = new Yucky();
-            var employees = yucky.GetEmployees(EmployeeFilterType.ByName, "T", new FakeSqlConnection());
+            var employeeRepository = new EmployeeRepository(new FakeSqlDriver());
+            var employees = employeeRepository.GetEmployees(EmployeeFilterType.ByName, "T");
 
-            foreach (Employee employee in employees)
+            foreach (var employee in employees)
             {
                 Console.WriteLine(employee);
             }
-
         }
     }
 }

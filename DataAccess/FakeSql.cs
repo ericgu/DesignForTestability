@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace designIssueExample
+namespace designIssueExample.DataAccess
 {
     public class FakeSqlConnection
     {
@@ -23,7 +23,7 @@ namespace designIssueExample
         }
     }
 
-    public class FakeSqlDataReader
+    public class FakeSqlDataReader : ISqlDataReader
     {
         List<object[]> m_data = new List<object[]>();
         object[] m_current;

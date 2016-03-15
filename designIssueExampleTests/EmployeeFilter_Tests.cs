@@ -37,11 +37,19 @@ namespace designIssueExampleTests
         }
 
         [TestMethod]
-        public void When_I_create_a_exempt_filter_with_an_age_that_is_too_young__Matches_returns_false()
+        public void When_I_create_a_exempt_filter_with_an_age_that_is_too_young_and_salaried__Matches_returns_false()
         {
             EmployeeFilter employeeFilter = new EmployeeFilter(EmployeeFilterType.ExemptOnly, null);
 
-            Assert.IsFalse(employeeFilter.Matches("Alan", 39, false));
+            Assert.IsFalse(employeeFilter.Matches("Alan", 39, true));
+        }
+
+        [TestMethod]
+        public void When_I_create_a_exempt_filter_with_an_age_that_is_old_enough_and_not_salaried__Matches_returns_false()
+        {
+            EmployeeFilter employeeFilter = new EmployeeFilter(EmployeeFilterType.ExemptOnly, null);
+
+            Assert.IsFalse(employeeFilter.Matches("Alan", 40, false));
         }
     }
 }

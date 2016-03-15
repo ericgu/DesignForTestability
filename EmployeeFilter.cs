@@ -35,9 +35,9 @@ namespace designIssueExample
             return true;
         }
 
-        public static EmployeeFilter CreateEmployeeFilter()
+        public static EmployeeFilter CreateEmployeeFilter(EmployeeFilterType employeeFilterType, string filter)
         {
-            EmployeeFilter employeeFilter = new EmployeeFilter(EmployeeFilterType.ByName, "T");
+            EmployeeFilter employeeFilter = new EmployeeFilter(employeeFilterType, filter);
             employeeFilter.ValidateEmployeeFilter();
             return employeeFilter;
         }

@@ -34,5 +34,12 @@ namespace designIssueExample
             }
             return true;
         }
+
+        public static EmployeeFilter CreateEmployeeFilter()
+        {
+            EmployeeFilter employeeFilter = new EmployeeFilter(EmployeeFilterType.ByName, "T");
+            employeeFilter.ValidateEmployeeFilter();
+            return employeeFilter;
+        }
     }
 }

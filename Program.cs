@@ -8,7 +8,7 @@ namespace designIssueExample
         static void Main(string[] args)
         {
             Yucky yucky = new Yucky();
-            var employeeFilter = CreateEmployeeFilter();
+            var employeeFilter = EmployeeFilter.CreateEmployeeFilter();
             var employees = Yucky.GetEmployees(employeeFilter, new FakeSqlConnection());
 
             foreach (Employee employee in employees)
@@ -16,13 +16,6 @@ namespace designIssueExample
                 Console.WriteLine(employee);
             }
 
-        }
-
-        private static EmployeeFilter CreateEmployeeFilter()
-        {
-            EmployeeFilter employeeFilter = new EmployeeFilter(EmployeeFilterType.ByName, "T");
-            employeeFilter.ValidateEmployeeFilter();
-            return employeeFilter;
         }
     }
 }

@@ -11,6 +11,7 @@ namespace designIssueExample
         {
             _employeeFilterType = employeeFilterType;
             _filter = filter;
+            ValidateEmployeeFilter();
         }
 
         public void ValidateEmployeeFilter()
@@ -38,7 +39,6 @@ namespace designIssueExample
         public static EmployeeFilter CreateEmployeeFilter(EmployeeFilterType employeeFilterType, string filter)
         {
             EmployeeFilter employeeFilter = new EmployeeFilter(employeeFilterType, filter);
-            employeeFilter.ValidateEmployeeFilter();
             return employeeFilter;
         }
     }

@@ -3,6 +3,28 @@ using System.Collections.Generic;
 
 namespace designIssueExample
 {
+    internal class EmployeeFilter
+    {
+        private EmployeeFilterType _employeeFilterType;
+        private string _filter;
+
+        public EmployeeFilter(EmployeeFilterType employeeFilterType, string filter)
+        {
+            _employeeFilterType = employeeFilterType;
+            _filter = filter;
+        }
+
+        public EmployeeFilterType EmployeeFilterType
+        {
+            get { return _employeeFilterType; }
+        }
+
+        public string Filter
+        {
+            get { return _filter; }
+        }
+    }
+
     class Yucky
     {
         private const int EmployeeIdColumnIndex = 0;
@@ -10,9 +32,9 @@ namespace designIssueExample
         private const int EmployeeAgeColumnIndex = 2;
         private const int EmployeeIsSalariedColumnIndex = 3;
 
-        public IEnumerable<Employee> GetEmployees(EmployeeFilterType employeeFilterType, string filter, FakeSqlConnection connection)
+        public IEnumerable<Employee> GetEmployees(EmployeeFilter employeeFilter, FakeSqlConnection connection)
         {
-            if (employeeFilterType == EmployeeFilterType.ByName && filter == null)
+            if (employeeFilter.EmployeeFilterType == EmployeeFilterType.ByName && employeeFilter.Filter == null)
             {
                 throw new ArgumentNullException("filter");
             }
@@ -45,10 +67,10 @@ namespace designIssueExample
                     int age = reader.GetInt32(EmployeeAgeColumnIndex);
                     bool isSalaried = reader.GetBoolean(EmployeeIsSalariedColumnIndex);
 
-                    switch (employeeFilterType)
+                    switch (employeeFilter.EmployeeFilterType)
                     {
                         case EmployeeFilterType.ByName:
-                            if (!name.StartsWith(filter)) continue;
+                            if (!name.StartsWith(employeeFilter.Filter)) continue;
                             break;
                         case EmployeeFilterType.ExemptOnly:
                             if (age < 40 || !isSalaried) continue;

@@ -2,7 +2,7 @@ using System;
 
 namespace designIssueExample
 {
-    internal class EmployeeFilter
+    public class EmployeeFilter
     {
         private EmployeeFilterType _employeeFilterType;
         private string _filter;

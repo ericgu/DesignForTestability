@@ -51,5 +51,12 @@ namespace designIssueExampleTests
 
             Assert.IsFalse(employeeFilter.Matches("Alan", 40, false));
         }
+        [TestMethod]
+        public void When_I_create_a_exempt_filter_with_an_age_that_is_old_enough_and_is_salaried__Matches_returns_true()
+        {
+            EmployeeFilter employeeFilter = new EmployeeFilter(EmployeeFilterType.ExemptOnly, null);
+
+            Assert.IsTrue(employeeFilter.Matches("Alan", 40, true));
+        }
     }
 }

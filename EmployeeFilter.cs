@@ -23,20 +23,20 @@ namespace designIssueExample
             get { return _filter; }
         }
 
-        public static void ValidateEmployeeFilter(EmployeeFilter employeeFilter)
+        public void ValidateEmployeeFilter()
         {
-            if (employeeFilter.EmployeeFilterType == EmployeeFilterType.ByName && employeeFilter.Filter == null)
+            if (EmployeeFilterType == EmployeeFilterType.ByName && Filter == null)
             {
                 throw new ArgumentNullException("filter");
             }
         }
 
-        public static bool DoFilter(EmployeeFilter employeeFilter, string name, int age, bool isSalaried)
+        public bool DoFilter(string name, int age, bool isSalaried)
         {
-            switch (employeeFilter.EmployeeFilterType)
+            switch (EmployeeFilterType)
             {
                 case EmployeeFilterType.ByName:
-                    if (!name.StartsWith(employeeFilter.Filter)) return true;
+                    if (!name.StartsWith(Filter)) return true;
                     break;
                 case EmployeeFilterType.ExemptOnly:
                     if (age < 40 || !isSalaried) return true;

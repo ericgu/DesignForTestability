@@ -12,7 +12,7 @@ namespace designIssueExample
 
         public IEnumerable<Employee> GetEmployees(EmployeeFilter employeeFilter, FakeSqlConnection connection)
         {
-            EmployeeFilter.ValidateEmployeeFilter(employeeFilter);
+            employeeFilter.ValidateEmployeeFilter();
 
             string query = "select * from employee, employee_role inner join employee.Id == employee_role.EmployeeId";
 
@@ -42,7 +42,7 @@ namespace designIssueExample
                     int age = reader.GetInt32(EmployeeAgeColumnIndex);
                     bool isSalaried = reader.GetBoolean(EmployeeIsSalariedColumnIndex);
 
-                    if (EmployeeFilter.DoFilter(employeeFilter, name, age, isSalaried)) continue;
+                    if (employeeFilter.DoFilter(name, age, isSalaried)) continue;
 
                     result.Add(new Employee {Name = name, Id = id, Age = age, IsSalaried = isSalaried});
                 }

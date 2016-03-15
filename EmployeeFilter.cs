@@ -11,11 +11,6 @@ namespace designIssueExample
         {
             _employeeFilterType = employeeFilterType;
             _filter = filter;
-            ValidateEmployeeFilter();
-        }
-
-        public void ValidateEmployeeFilter()
-        {
             if (_employeeFilterType == EmployeeFilterType.ByName && _filter == null)
             {
                 throw new ArgumentNullException("filter");

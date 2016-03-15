@@ -34,10 +34,7 @@ namespace designIssueExample
 
         public IEnumerable<Employee> GetEmployees(EmployeeFilter employeeFilter, FakeSqlConnection connection)
         {
-            if (employeeFilter.EmployeeFilterType == EmployeeFilterType.ByName && employeeFilter.Filter == null)
-            {
-                throw new ArgumentNullException("filter");
-            }
+            ValidateEmployeeFilter(employeeFilter);
 
             string query = "select * from employee, employee_role inner join employee.Id == employee_role.EmployeeId";
 
@@ -82,6 +79,14 @@ namespace designIssueExample
             }
 
             return result;
+        }
+
+        private static void ValidateEmployeeFilter(EmployeeFilter employeeFilter)
+        {
+            if (employeeFilter.EmployeeFilterType == EmployeeFilterType.ByName && employeeFilter.Filter == null)
+            {
+                throw new ArgumentNullException("filter");
+            }
         }
     }
 }

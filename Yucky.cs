@@ -14,6 +14,11 @@ namespace designIssueExample
         {
             employeeFilter.ValidateEmployeeFilter();
 
+            return GetEmployees2(employeeFilter, connection);
+        }
+
+        private static IEnumerable<Employee> GetEmployees2(EmployeeFilter employeeFilter, FakeSqlConnection connection)
+        {
             string query = "select * from employee, employee_role inner join employee.Id == employee_role.EmployeeId";
 
             List<Employee> result = new List<Employee>();

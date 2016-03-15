@@ -8,7 +8,8 @@ namespace designIssueExample
         static void Main(string[] args)
         {
             Yucky yucky = new Yucky();
-            var employeeFilter = EmployeeFilter.CreateEmployeeFilter(EmployeeFilterType.ByName, "T");
+            EmployeeFilter employeeFilter1 = new EmployeeFilter(EmployeeFilterType.ByName, "T");
+            var employeeFilter = employeeFilter1;
             var employees = Yucky.GetEmployees(employeeFilter, new FakeSqlConnection());
 
             foreach (Employee employee in employees)

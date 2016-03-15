@@ -35,11 +35,5 @@ namespace designIssueExample
             }
             return true;
         }
-
-        public static EmployeeFilter CreateEmployeeFilter(EmployeeFilterType employeeFilterType, string filter)
-        {
-            EmployeeFilter employeeFilter = new EmployeeFilter(employeeFilterType, filter);
-            return employeeFilter;
-        }
     }
 }

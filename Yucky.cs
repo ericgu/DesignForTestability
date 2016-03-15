@@ -23,6 +23,14 @@ namespace designIssueExample
         {
             get { return _filter; }
         }
+
+        public static void ValidateEmployeeFilter(EmployeeFilter employeeFilter)
+        {
+            if (employeeFilter.EmployeeFilterType == EmployeeFilterType.ByName && employeeFilter.Filter == null)
+            {
+                throw new ArgumentNullException("filter");
+            }
+        }
     }
 
     class Yucky
@@ -34,7 +42,7 @@ namespace designIssueExample
 
         public IEnumerable<Employee> GetEmployees(EmployeeFilter employeeFilter, FakeSqlConnection connection)
         {
-            ValidateEmployeeFilter(employeeFilter);
+            EmployeeFilter.ValidateEmployeeFilter(employeeFilter);
 
             string query = "select * from employee, employee_role inner join employee.Id == employee_role.EmployeeId";
 
@@ -79,14 +87,6 @@ namespace designIssueExample
             }
 
             return result;
-        }
-
-        private static void ValidateEmployeeFilter(EmployeeFilter employeeFilter)
-        {
-            if (employeeFilter.EmployeeFilterType == EmployeeFilterType.ByName && employeeFilter.Filter == null)
-            {
-                throw new ArgumentNullException("filter");
-            }
         }
     }
 }

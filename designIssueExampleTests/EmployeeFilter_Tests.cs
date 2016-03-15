@@ -27,5 +27,13 @@ namespace designIssueExampleTests
 
             Assert.IsFalse(employeeFilter.Matches("Fred", 42, false));
         }
+
+        [TestMethod]
+        public void When_I_create_a_named_filter_and_pass_values_that_do_match__Matches_returns_true()
+        {
+            EmployeeFilter employeeFilter = new EmployeeFilter(EmployeeFilterType.ByName, "A");
+
+            Assert.IsTrue(employeeFilter.Matches("Alan", 42, false));
+        }
     }
 }

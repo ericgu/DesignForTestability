@@ -10,14 +10,7 @@ namespace designIssueExample
         private const int EmployeeAgeColumnIndex = 2;
         private const int EmployeeIsSalariedColumnIndex = 3;
 
-        public IEnumerable<Employee> GetEmployees(EmployeeFilter employeeFilter, FakeSqlConnection connection)
-        {
-            employeeFilter.ValidateEmployeeFilter();
-
-            return GetEmployees2(employeeFilter, connection);
-        }
-
-        private static IEnumerable<Employee> GetEmployees2(EmployeeFilter employeeFilter, FakeSqlConnection connection)
+        public static IEnumerable<Employee> GetEmployees(EmployeeFilter employeeFilter, FakeSqlConnection connection)
         {
             string query = "select * from employee, employee_role inner join employee.Id == employee_role.EmployeeId";
 

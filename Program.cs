@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace designIssueExample
 {
@@ -7,7 +8,9 @@ namespace designIssueExample
         static void Main(string[] args)
         {
             Yucky yucky = new Yucky();
-            var employees = yucky.GetEmployees(new EmployeeFilter(EmployeeFilterType.ByName, "T"), new FakeSqlConnection());
+            EmployeeFilter employeeFilter = new EmployeeFilter(EmployeeFilterType.ByName, "T");
+            employeeFilter.ValidateEmployeeFilter();
+            var employees = Yucky.GetEmployees(employeeFilter, new FakeSqlConnection());
 
             foreach (Employee employee in employees)
             {

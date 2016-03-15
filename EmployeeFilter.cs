@@ -13,19 +13,9 @@ namespace designIssueExample
             _filter = filter;
         }
 
-        public EmployeeFilterType EmployeeFilterType
-        {
-            get { return _employeeFilterType; }
-        }
-
-        public string Filter
-        {
-            get { return _filter; }
-        }
-
         public void ValidateEmployeeFilter()
         {
-            if (EmployeeFilterType == EmployeeFilterType.ByName && Filter == null)
+            if (_employeeFilterType == EmployeeFilterType.ByName && _filter == null)
             {
                 throw new ArgumentNullException("filter");
             }
@@ -33,10 +23,10 @@ namespace designIssueExample
 
         public static bool Matches(EmployeeFilter employeeFilter, string name, int age, bool isSalaried)
         {
-            switch (employeeFilter.EmployeeFilterType)
+            switch (employeeFilter._employeeFilterType)
             {
                 case EmployeeFilterType.ByName:
-                    if (!name.StartsWith(employeeFilter.Filter)) return false;
+                    if (!name.StartsWith(employeeFilter._filter)) return false;
                     break;
                 case EmployeeFilterType.ExemptOnly:
                     if (age < 40 || !isSalaried) return false;

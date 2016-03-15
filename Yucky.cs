@@ -72,21 +72,27 @@ namespace designIssueExample
                     int age = reader.GetInt32(EmployeeAgeColumnIndex);
                     bool isSalaried = reader.GetBoolean(EmployeeIsSalariedColumnIndex);
 
-                    switch (employeeFilter.EmployeeFilterType)
-                    {
-                        case EmployeeFilterType.ByName:
-                            if (!name.StartsWith(employeeFilter.Filter)) continue;
-                            break;
-                        case EmployeeFilterType.ExemptOnly:
-                            if (age < 40 || !isSalaried) continue;
-                            break;
-                    }
+                    if (DoFilter(employeeFilter, name, age, isSalaried)) continue;
 
                     result.Add(new Employee {Name = name, Id = id, Age = age, IsSalaried = isSalaried});
                 }
             }
 
             return result;
+        }
+
+        private static bool DoFilter(EmployeeFilter employeeFilter, string name, int age, bool isSalaried)
+        {
+            switch (employeeFilter.EmployeeFilterType)
+            {
+                case EmployeeFilterType.ByName:
+                    if (!name.StartsWith(employeeFilter.Filter)) return true;
+                    break;
+                case EmployeeFilterType.ExemptOnly:
+                    if (age < 40 || !isSalaried) return true;
+                    break;
+            }
+            return false;
         }
     }
 }

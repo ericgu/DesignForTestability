@@ -17,12 +17,12 @@ namespace designIssueExample
             }
         }
 
-        public static bool Matches(EmployeeFilter employeeFilter, string name, int age, bool isSalaried)
+        public bool Matches(string name, int age, bool isSalaried)
         {
-            switch (employeeFilter._employeeFilterType)
+            switch (_employeeFilterType)
             {
                 case EmployeeFilterType.ByName:
-                    if (!name.StartsWith(employeeFilter._filter)) return false;
+                    if (!name.StartsWith(_filter)) return false;
                     break;
                 case EmployeeFilterType.ExemptOnly:
                     if (age < 40 || !isSalaried) return false;

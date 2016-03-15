@@ -42,7 +42,7 @@ namespace designIssueExample
                     int age = reader.GetInt32(EmployeeAgeColumnIndex);
                     bool isSalaried = reader.GetBoolean(EmployeeIsSalariedColumnIndex);
 
-                    if (employeeFilter.DoFilter(name, age, isSalaried)) continue;
+                    if (!EmployeeFilter.Matches(employeeFilter, name, age, isSalaried)) continue;
 
                     result.Add(new Employee {Name = name, Id = id, Age = age, IsSalaried = isSalaried});
                 }

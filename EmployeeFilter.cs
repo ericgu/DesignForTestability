@@ -31,18 +31,18 @@ namespace designIssueExample
             }
         }
 
-        public bool DoFilter(string name, int age, bool isSalaried)
+        public static bool Matches(EmployeeFilter employeeFilter, string name, int age, bool isSalaried)
         {
-            switch (EmployeeFilterType)
+            switch (employeeFilter.EmployeeFilterType)
             {
                 case EmployeeFilterType.ByName:
-                    if (!name.StartsWith(Filter)) return true;
+                    if (!name.StartsWith(employeeFilter.Filter)) return false;
                     break;
                 case EmployeeFilterType.ExemptOnly:
-                    if (age < 40 || !isSalaried) return true;
+                    if (age < 40 || !isSalaried) return false;
                     break;
             }
-            return false;
+            return true;
         }
     }
 }

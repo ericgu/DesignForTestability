@@ -25,7 +25,7 @@ namespace designIssueExample
                     try
                     {
                         reader = sqlCommand.ExecuteReader();
-                        break;
+                        break; 
                     }
                     catch (Exception)
                     {

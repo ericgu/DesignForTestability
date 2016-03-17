@@ -46,8 +46,7 @@ namespace designIssueExample
                 }
             }
 
-            var collection = employeeCollection;
-            return collection;
+            return employeeCollection;
         }
     }
 }

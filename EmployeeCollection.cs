@@ -11,9 +11,14 @@ namespace designIssueExample
             _employeeCollection = new List<Employee>();
         }
 
+        public List<Employee> Items
+        {
+            get { return _employeeCollection; }
+        }
+
         public List<Employee> CreateEmployeeCollection()
         {
-            return _employeeCollection;
+            return Items;
         }
     }
 }

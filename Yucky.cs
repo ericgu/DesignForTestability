@@ -15,7 +15,6 @@ namespace designIssueExample
             string query = "select * from employee, employee_role inner join employee.Id == employee_role.EmployeeId";
 
             EmployeeCollection employeeCollection = new EmployeeCollection();
-            var result = employeeCollection.Items;
             using (FakeSqlCommand sqlCommand = new FakeSqlCommand(query, connection))
             {
                 FakeSqlDataReader reader;
@@ -43,11 +42,11 @@ namespace designIssueExample
 
                     if (!employeeFilter.Matches(name, age, isSalaried)) continue;
 
-                    result.Add(new Employee {Name = name, Id = id, Age = age, IsSalaried = isSalaried});
+                    employeeCollection.Items.Add(new Employee {Name = name, Id = id, Age = age, IsSalaried = isSalaried});
                 }
             }
 
-            return result;
+            return employeeCollection.Items;
         }
     }
 }

@@ -4,10 +4,16 @@ namespace designIssueExample
 {
     class EmployeeCollection
     {
+        private List<Employee> _employeeCollection;
+
+        public EmployeeCollection()
+        {
+            _employeeCollection = new List<Employee>();
+        }
+
         public List<Employee> CreateEmployeeCollection()
         {
-            List<Employee> result = new List<Employee>();
-            return result;
+            return _employeeCollection;
         }
     }
 }

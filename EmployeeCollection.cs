@@ -6,11 +6,6 @@ namespace designIssueExample
     {
         private List<Employee> _employeeCollection;
 
-        public List<Employee> Items
-        {
-            get { return _employeeCollection; }
-        }
-
         public List<Employee> CreateEmployeeCollection()
         {
             _employeeCollection = new List<Employee>();

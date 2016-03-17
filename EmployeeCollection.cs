@@ -15,10 +15,5 @@ namespace designIssueExample
         {
             get { return _employeeCollection; }
         }
-
-        public List<Employee> CreateEmployeeCollection()
-        {
-            return Items;
-        }
     }
 }

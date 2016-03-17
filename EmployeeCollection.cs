@@ -4,7 +4,7 @@ namespace designIssueExample
 {
     class EmployeeCollection
     {
-        public static List<Employee> CreateEmployeeCollection(EmployeeCollection employeeCollection)
+        public List<Employee> CreateEmployeeCollection()
         {
             List<Employee> result = new List<Employee>();
             return result;

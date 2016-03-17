@@ -14,7 +14,8 @@ namespace designIssueExample
         {
             string query = "select * from employee, employee_role inner join employee.Id == employee_role.EmployeeId";
 
-            var result = new EmployeeCollection().Items;
+            EmployeeCollection employeeCollection = new EmployeeCollection();
+            var result = employeeCollection.Items;
             using (FakeSqlCommand sqlCommand = new FakeSqlCommand(query, connection))
             {
                 FakeSqlDataReader reader;

@@ -2,7 +2,7 @@
 
 namespace designIssueExample
 {
-    class EmployeeCollection
+    public class EmployeeCollection
     {
         private List<Employee> _employeeCollection;
 

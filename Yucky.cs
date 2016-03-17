@@ -12,6 +12,12 @@ namespace designIssueExample
 
         public static IEnumerable<Employee> GetEmployees(EmployeeFilter employeeFilter, FakeSqlConnection connection)
         {
+            var collection = GetEmployees2(employeeFilter, connection);
+            return collection.Items;
+        }
+
+        private static EmployeeCollection GetEmployees2(EmployeeFilter employeeFilter, FakeSqlConnection connection)
+        {
             string query = "select * from employee, employee_role inner join employee.Id == employee_role.EmployeeId";
 
             EmployeeCollection employeeCollection = new EmployeeCollection();
@@ -25,7 +31,7 @@ namespace designIssueExample
                     try
                     {
                         reader = sqlCommand.ExecuteReader();
-                        break; 
+                        break;
                     }
                     catch (Exception)
                     {
@@ -47,7 +53,7 @@ namespace designIssueExample
             }
 
             var collection = employeeCollection;
-            return collection.Items;
+            return collection;
         }
     }
 }

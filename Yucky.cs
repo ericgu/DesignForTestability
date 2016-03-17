@@ -10,7 +10,7 @@ namespace designIssueExample
         private const int EmployeeAgeColumnIndex = 2;
         private const int EmployeeIsSalariedColumnIndex = 3;
 
-        public static EmployeeCollection GetEmployees2(EmployeeFilter employeeFilter, FakeSqlConnection connection)
+        public static EmployeeCollection GetEmployees(EmployeeFilter employeeFilter, FakeSqlConnection connection)
         {
             string query = "select * from employee, employee_role inner join employee.Id == employee_role.EmployeeId";
 

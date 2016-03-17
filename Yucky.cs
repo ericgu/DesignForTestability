@@ -14,7 +14,7 @@ namespace designIssueExample
         {
             string query = "select * from employee, employee_role inner join employee.Id == employee_role.EmployeeId";
 
-            List<Employee> result = new List<Employee>();
+            var result = CreateEmployeeCollection();
             using (FakeSqlCommand sqlCommand = new FakeSqlCommand(query, connection))
             {
                 FakeSqlDataReader reader;
@@ -46,6 +46,12 @@ namespace designIssueExample
                 }
             }
 
+            return result;
+        }
+
+        private static List<Employee> CreateEmployeeCollection()
+        {
+            List<Employee> result = new List<Employee>();
             return result;
         }
     }

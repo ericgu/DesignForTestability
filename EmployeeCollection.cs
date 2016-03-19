@@ -35,7 +35,7 @@ namespace designIssueExample
             EmployeeCollection filteredEmployees = new EmployeeCollection();
             foreach (Employee employee in Items)
             {
-                if (((Func<Employee, bool>) filter)(employee))
+                if (filter(employee))
                 {
                     filteredEmployees.Items.Add(employee);
                 }

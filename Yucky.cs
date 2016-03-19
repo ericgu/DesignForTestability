@@ -47,7 +47,7 @@ namespace designIssueExample
                         Age = age,
                         IsSalaried = isSalaried
                     };
-                    employeeCollection.AddEmployeeIfMatch(employeeFilter, name, age, isSalaried, id, employee);
+                    employeeCollection.AddEmployeeIfMatch(employeeFilter, employee);
                 }
             }
 

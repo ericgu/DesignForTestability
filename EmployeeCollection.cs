@@ -16,7 +16,7 @@ namespace designIssueExample
             get { return _employeeCollection; }
         }
 
-        public void AddEmployeeIfMatch(EmployeeFilter employeeFilter, string name, int age, bool isSalaried, int id, Employee employee)
+        public void AddEmployeeIfMatch(EmployeeFilter employeeFilter, Employee employee)
         {
             if (employeeFilter.Matches(employee))
             {

@@ -47,11 +47,17 @@ namespace designIssueExample
                         Age = age,
                         IsSalaried = isSalaried
                     };
-                    employeeCollection.AddEmployeeIfMatch(employeeFilter.Matches, employee);
+                    employeeCollection.Items.Add(employee);
                 }
             }
 
-            return employeeCollection;
+            EmployeeCollection filteredEmployees = new EmployeeCollection();
+            foreach (Employee employee in employeeCollection.Items)
+            {
+                filteredEmployees.AddEmployeeIfMatch(employeeFilter.Matches, employee);
+            }
+
+            return filteredEmployees;
         }
     }
 }

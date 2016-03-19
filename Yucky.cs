@@ -47,7 +47,7 @@ namespace designIssueExample
                         Age = age,
                         IsSalaried = isSalaried
                     };
-                    employeeCollection.AddEmployee(employee);
+                    employeeCollection.Add(employee);
                 }
             }
 

@@ -25,7 +25,7 @@ namespace designIssueExample
             }
         }
 
-        public void AddEmployee(Employee employee)
+        public void Add(Employee employee)
         {
             Items.Add(employee);
         }

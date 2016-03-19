@@ -40,20 +40,26 @@ namespace designIssueExample
                     int age = reader.GetInt32(EmployeeAgeColumnIndex);
                     bool isSalaried = reader.GetBoolean(EmployeeIsSalariedColumnIndex);
 
-                    if (employeeFilter.Matches(name, age, isSalaried))
-                    {
-                        employeeCollection.Items.Add(new Employee
-                        {
-                            Name = name,
-                            Id = id,
-                            Age = age,
-                            IsSalaried = isSalaried
-                        });
-                    }
+                    AddEmployeeIfMatch(employeeFilter, name, age, isSalaried, employeeCollection, id);
                 }
             }
 
             return employeeCollection;
+        }
+
+        private static void AddEmployeeIfMatch(EmployeeFilter employeeFilter, string name, int age, bool isSalaried,
+            EmployeeCollection employeeCollection, int id)
+        {
+            if (employeeFilter.Matches(name, age, isSalaried))
+            {
+                employeeCollection.Items.Add(new Employee
+                {
+                    Name = name,
+                    Id = id,
+                    Age = age,
+                    IsSalaried = isSalaried
+                });
+            }
         }
     }
 }

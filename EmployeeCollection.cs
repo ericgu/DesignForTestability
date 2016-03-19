@@ -30,7 +30,7 @@ namespace designIssueExample
             Items.Add(employee);
         }
 
-        public EmployeeCollection Filter(EmployeeFilter employeeFilter, Func<Employee, bool> filter)
+        public EmployeeCollection Filter(Func<Employee, bool> filter)
         {
             EmployeeCollection filteredEmployees = new EmployeeCollection();
             foreach (Employee employee in Items)

@@ -25,9 +25,9 @@ namespace designIssueExample
             }
         }
 
-        public static void AddEmployee(EmployeeCollection employeeCollection, Employee employee)
+        public void AddEmployee(Employee employee)
         {
-            employeeCollection.Items.Add(employee);
+            Items.Add(employee);
         }
     }
 }

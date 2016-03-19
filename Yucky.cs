@@ -51,7 +51,7 @@ namespace designIssueExample
                 }
             }
 
-            return employeeCollection.Filter(employeeFilter);
+            return employeeCollection.Filter(employeeFilter, employeeFilter.Matches);
         }
     }
 }

@@ -29,5 +29,15 @@ namespace designIssueExample
         {
             Items.Add(employee);
         }
+
+        public static EmployeeCollection Filter(EmployeeFilter employeeFilter, EmployeeCollection employeeCollection)
+        {
+            EmployeeCollection filteredEmployees = new EmployeeCollection();
+            foreach (Employee employee in employeeCollection.Items)
+            {
+                filteredEmployees.AddEmployeeIfMatch(employeeFilter.Matches, employee);
+            }
+            return filteredEmployees;
+        }
     }
 }

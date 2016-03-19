@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using designIssueExample;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -26,9 +27,7 @@ namespace designIssueExampleTests
         {
             EmployeeCollection employeeCollection = new EmployeeCollection();
 
-            EmployeeFilter employeeFilter = new EmployeeFilter(EmployeeFilterType.ByName, "X");
-
-            employeeCollection.AddEmployeeIfMatch(employeeFilter, new Employee() { Name = "Fred" });
+            employeeCollection.AddEmployeeIfMatch((e) => false, new Employee() { Name = "Fred" });
 
             Assert.AreEqual(0, employeeCollection.Items.Count);
         }
@@ -38,9 +37,7 @@ namespace designIssueExampleTests
         {
             EmployeeCollection employeeCollection = new EmployeeCollection();
 
-            EmployeeFilter employeeFilter = new EmployeeFilter(EmployeeFilterType.ByName, "X");
-
-            employeeCollection.AddEmployeeIfMatch(employeeFilter, new Employee() { Name = "Xavier" });
+            employeeCollection.AddEmployeeIfMatch((e) => true, new Employee() { Name = "Xavier" });
 
             Assert.AreEqual(1, employeeCollection.Items.Count);
             Assert.AreEqual("Xavier", employeeCollection.Items.First().Name);
@@ -51,11 +48,9 @@ namespace designIssueExampleTests
         {
             EmployeeCollection employeeCollection = new EmployeeCollection();
 
-            EmployeeFilter employeeFilter = new EmployeeFilter(EmployeeFilterType.ByName, "X");
-
-            employeeCollection.AddEmployeeIfMatch(employeeFilter, new Employee() { Name = "Xavier" });
-            employeeCollection.AddEmployeeIfMatch(employeeFilter, new Employee() { Name = "Thor" });
-            employeeCollection.AddEmployeeIfMatch(employeeFilter, new Employee() { Name = "Xerxes" });
+            employeeCollection.AddEmployeeIfMatch((e) => true, new Employee() { Name = "Xavier" });
+            employeeCollection.AddEmployeeIfMatch((e) => false, new Employee() { Name = "Thor" });
+            employeeCollection.AddEmployeeIfMatch((e) => true, new Employee() { Name = "Xerxes" });
 
             Assert.AreEqual(2, employeeCollection.Items.Count);
             Assert.AreEqual("Xavier", employeeCollection.Items.First().Name);

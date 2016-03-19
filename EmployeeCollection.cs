@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace designIssueExample
 {
@@ -16,9 +17,9 @@ namespace designIssueExample
             get { return _employeeCollection; }
         }
 
-        public void AddEmployeeIfMatch(EmployeeFilter employeeFilter, Employee employee)
+        public void AddEmployeeIfMatch(Func<Employee, bool> employeeFilter, Employee employee)
         {
-            if (employeeFilter.Matches(employee))
+            if (employeeFilter(employee))
             {
                 Items.Add(employee);
             }

@@ -51,9 +51,7 @@ namespace designIssueExample
                 }
             }
 
-            var filteredEmployees = employeeCollection.Filter(employeeFilter);
-
-            return filteredEmployees;
+            return employeeCollection.Filter(employeeFilter);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace designIssueExample
             }
         }
 
- public bool Matches(Employee employee)
+        public bool Matches(Employee employee)
         {
             switch (_employeeFilterType)
             {

@@ -51,12 +51,18 @@ namespace designIssueExample
                 }
             }
 
+            var filteredEmployees = Filter(employeeFilter, employeeCollection);
+
+            return filteredEmployees;
+        }
+
+        private static EmployeeCollection Filter(EmployeeFilter employeeFilter, EmployeeCollection employeeCollection)
+        {
             EmployeeCollection filteredEmployees = new EmployeeCollection();
             foreach (Employee employee in employeeCollection.Items)
             {
                 filteredEmployees.AddEmployeeIfMatch(employeeFilter.Matches, employee);
             }
-
             return filteredEmployees;
         }
     }

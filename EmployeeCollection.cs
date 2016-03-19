@@ -16,17 +16,11 @@ namespace designIssueExample
             get { return _employeeCollection; }
         }
 
-        public void AddEmployeeIfMatch(EmployeeFilter employeeFilter, string name, int age, bool isSalaried, int id)
+        public void AddEmployeeIfMatch(EmployeeFilter employeeFilter, string name, int age, bool isSalaried, int id, Employee employee)
         {
             if (employeeFilter.Matches(name, age, isSalaried))
             {
-                Items.Add(new Employee
-                {
-                    Name = name,
-                    Id = id,
-                    Age = age,
-                    IsSalaried = isSalaried
-                });
+                Items.Add(employee);
             }
         }
     }

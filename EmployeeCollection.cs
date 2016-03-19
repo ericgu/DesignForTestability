@@ -18,7 +18,7 @@ namespace designIssueExample
 
         public void AddEmployeeIfMatch(EmployeeFilter employeeFilter, string name, int age, bool isSalaried, int id, Employee employee)
         {
-            if (employeeFilter.Matches(new EmployeeFilter.Employee(name, age, isSalaried)))
+            if (employeeFilter.Matches(employee))
             {
                 Items.Add(employee);
             }

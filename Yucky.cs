@@ -47,7 +47,7 @@ namespace designIssueExample
                         Age = age,
                         IsSalaried = isSalaried
                     };
-                    AddEmployee(employeeCollection, employee);
+                    EmployeeCollection.AddEmployee(employeeCollection, employee);
                 }
             }
 
@@ -58,11 +58,6 @@ namespace designIssueExample
             }
 
             return filteredEmployees;
-        }
-
-        private static void AddEmployee(EmployeeCollection employeeCollection, Employee employee)
-        {
-            employeeCollection.Items.Add(employee);
         }
     }
 }

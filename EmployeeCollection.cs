@@ -24,5 +24,10 @@ namespace designIssueExample
                 Items.Add(employee);
             }
         }
+
+        public static void AddEmployee(EmployeeCollection employeeCollection, Employee employee)
+        {
+            employeeCollection.Items.Add(employee);
+        }
     }
 }

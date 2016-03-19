@@ -30,10 +30,10 @@ namespace designIssueExample
             Items.Add(employee);
         }
 
-        public static EmployeeCollection Filter(EmployeeFilter employeeFilter, EmployeeCollection employeeCollection)
+        public EmployeeCollection Filter(EmployeeFilter employeeFilter)
         {
             EmployeeCollection filteredEmployees = new EmployeeCollection();
-            foreach (Employee employee in employeeCollection.Items)
+            foreach (Employee employee in Items)
             {
                 filteredEmployees.AddEmployeeIfMatch(employeeFilter.Matches, employee);
             }

@@ -27,9 +27,11 @@ namespace designIssueExampleTests
         {
             EmployeeCollection employeeCollection = new EmployeeCollection();
 
-            employeeCollection.AddEmployeeIfMatch((e) => false, new Employee() { Name = "Fred" });
+            employeeCollection.Add(new Employee() { Name = "Fred" });
 
-            Assert.AreEqual(0, employeeCollection.Items.Count);
+            var result = employeeCollection.Filter((employee) => employee.Name.StartsWith("X"));
+
+            Assert.AreEqual(0, result.Items.Count);
         }
 
         [TestMethod]
@@ -37,10 +39,12 @@ namespace designIssueExampleTests
         {
             EmployeeCollection employeeCollection = new EmployeeCollection();
 
-            employeeCollection.AddEmployeeIfMatch((e) => true, new Employee() { Name = "Xavier" });
+            employeeCollection.Add(new Employee() { Name = "Xavier" });
 
-            Assert.AreEqual(1, employeeCollection.Items.Count);
-            Assert.AreEqual("Xavier", employeeCollection.Items.First().Name);
+            var result = employeeCollection.Filter((employee) => employee.Name.StartsWith("X"));
+
+            Assert.AreEqual(1, result.Items.Count);
+            Assert.AreEqual("Xavier", result.Items.First().Name);
         }
 
         [TestMethod]
@@ -48,13 +52,15 @@ namespace designIssueExampleTests
         {
             EmployeeCollection employeeCollection = new EmployeeCollection();
 
-            employeeCollection.AddEmployeeIfMatch((e) => true, new Employee() { Name = "Xavier" });
-            employeeCollection.AddEmployeeIfMatch((e) => false, new Employee() { Name = "Thor" });
-            employeeCollection.AddEmployeeIfMatch((e) => true, new Employee() { Name = "Xerxes" });
+            employeeCollection.Add(new Employee() { Name = "Xavier" });
+            employeeCollection.Add(new Employee() { Name = "Thor" });
+            employeeCollection.Add(new Employee() { Name = "Xerxes" });
 
-            Assert.AreEqual(2, employeeCollection.Items.Count);
-            Assert.AreEqual("Xavier", employeeCollection.Items.First().Name);
-            Assert.AreEqual("Xerxes", employeeCollection.Items.Skip(1).First().Name);
+            var result = employeeCollection.Filter((employee) => employee.Name.StartsWith("X"));
+
+            Assert.AreEqual(2, result.Items.Count);
+            Assert.AreEqual("Xavier", result.Items.First().Name);
+            Assert.AreEqual("Xerxes", result.Items.Skip(1).First().Name);
         }
     }
 }

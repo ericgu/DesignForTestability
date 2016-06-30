@@ -7,9 +7,7 @@ namespace designIssueExample
     {
         public static EmployeeCollection GetEmployees(EmployeeFilter employeeFilter, EmployeeSource employeeSource)
         {
-            var employeeCollection = employeeSource.FetchEmployees();
-
-            return employeeCollection.Filter(employeeFilter.Matches);
+            return employeeSource.FetchEmployees().Filter(employeeFilter.Matches);
         }
     }
 }

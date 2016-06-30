@@ -29,10 +29,10 @@ namespace designIssueExample
 
                 while (reader.Read())
                 {
-                    int id = reader.GetInt32(Yucky.EmployeeIdColumnIndex);
-                    string name = reader.GetString(Yucky.EmployeeNameColumnIndex);
-                    int age = reader.GetInt32(Yucky.EmployeeAgeColumnIndex);
-                    bool isSalaried = reader.GetBoolean(Yucky.EmployeeIsSalariedColumnIndex);
+                    int id = reader.GetInt32(EmployeeIdColumnIndex);
+                    string name = reader.GetString(EmployeeNameColumnIndex);
+                    int age = reader.GetInt32(EmployeeAgeColumnIndex);
+                    bool isSalaried = reader.GetBoolean(EmployeeIsSalariedColumnIndex);
 
                     var employee = new Employee
                     {
@@ -46,5 +46,10 @@ namespace designIssueExample
             }
             return employeeCollection;
         }
+
+        private const int EmployeeIdColumnIndex = 0;
+        private const int EmployeeNameColumnIndex = 1;
+        private const int EmployeeAgeColumnIndex = 2;
+        private const int EmployeeIsSalariedColumnIndex = 3;
     }
 }

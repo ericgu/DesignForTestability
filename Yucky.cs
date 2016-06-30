@@ -12,6 +12,13 @@ namespace designIssueExample
 
         public static EmployeeCollection GetEmployees(EmployeeFilter employeeFilter, FakeSqlConnection connection)
         {
+            var employeeCollection = FetchEmployees(connection);
+
+            return employeeCollection.Filter(employeeFilter.Matches);
+        }
+
+        private static EmployeeCollection FetchEmployees(FakeSqlConnection connection)
+        {
             string query = "select * from employee, employee_role inner join employee.Id == employee_role.EmployeeId";
 
             EmployeeCollection employeeCollection = new EmployeeCollection();
@@ -50,8 +57,7 @@ namespace designIssueExample
                     employeeCollection.Add(employee);
                 }
             }
-
-            return employeeCollection.Filter(employeeFilter.Matches);
+            return employeeCollection;
         }
     }
 }

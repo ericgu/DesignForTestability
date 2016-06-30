@@ -4,12 +4,19 @@ namespace designIssueExample
 {
     class EmployeeSource
     {
-        public EmployeeCollection FetchEmployees(FakeSqlConnection connection) 
+        private FakeSqlConnection _connection;
+
+        public EmployeeSource(FakeSqlConnection connection)
+        {
+            _connection = connection;
+        }
+
+        public EmployeeCollection FetchEmployees() 
         {
             string query = "select * from employee, employee_role inner join employee.Id == employee_role.EmployeeId";
 
             EmployeeCollection employeeCollection = new EmployeeCollection();
-            using (FakeSqlCommand sqlCommand = new FakeSqlCommand(query, connection))
+            using (FakeSqlCommand sqlCommand = new FakeSqlCommand(query, _connection))
             {
                 FakeSqlDataReader reader;
                 int retryCount = 5;

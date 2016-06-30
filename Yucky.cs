@@ -5,9 +5,9 @@ namespace designIssueExample
 {
     class Yucky
     {
-        public static EmployeeCollection GetEmployees(EmployeeFilter employeeFilter, FakeSqlConnection connection)
+        public static EmployeeCollection GetEmployees(EmployeeFilter employeeFilter, EmployeeSource employeeSource)
         {
-            var employeeCollection = new EmployeeSource(connection).FetchEmployees();
+            var employeeCollection = employeeSource.FetchEmployees();
 
             return employeeCollection.Filter(employeeFilter.Matches);
         }

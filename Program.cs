@@ -10,7 +10,8 @@ namespace designIssueExample
             Yucky yucky = new Yucky();
             EmployeeFilter employeeFilter1 = new EmployeeFilter(EmployeeFilterType.ByName, "T");
             var employeeFilter = employeeFilter1;
-            var collection = Yucky.GetEmployees(employeeFilter, new FakeSqlConnection());
+            FakeSqlConnection connection = new FakeSqlConnection();
+            var collection = Yucky.GetEmployees(employeeFilter, new EmployeeSource(connection));
             var employees = (IEnumerable<Employee>) collection.Items;
 
             foreach (Employee employee in employees)

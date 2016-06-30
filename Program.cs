@@ -7,14 +7,13 @@ namespace designIssueExample
     {
         static void Main(string[] args)
         {
-            Yucky yucky = new Yucky();
-            EmployeeFilter employeeFilter1 = new EmployeeFilter(EmployeeFilterType.ByName, "T");
-            var employeeFilter = employeeFilter1;
+            var employeeFilter = new EmployeeFilter(EmployeeFilterType.ByName, "T");
             FakeSqlConnection connection = new FakeSqlConnection();
-            var collection = Yucky.GetEmployees(employeeFilter, new EmployeeSource(connection));
-            var employees = (IEnumerable<Employee>) collection.Items;
+            var employeeSource = new EmployeeSource(connection);
 
-            foreach (Employee employee in employees)
+            var collection = employeeSource.FetchEmployees().Filter(employeeFilter.Matches);
+
+            foreach (Employee employee in collection.Items)
             {
                 Console.WriteLine(employee);
             }

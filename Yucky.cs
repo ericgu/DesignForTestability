@@ -7,7 +7,7 @@ namespace designIssueExample
     {
         public static EmployeeCollection GetEmployees(EmployeeFilter employeeFilter, FakeSqlConnection connection)
         {
-            var employeeCollection = EmployeeSource.FetchEmployees(connection, new EmployeeSource());
+            var employeeCollection = new EmployeeSource().FetchEmployees(connection);
 
             return employeeCollection.Filter(employeeFilter.Matches);
         }

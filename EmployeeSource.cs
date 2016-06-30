@@ -4,7 +4,7 @@ namespace designIssueExample
 {
     class EmployeeSource
     {
-        public static EmployeeCollection FetchEmployees(FakeSqlConnection connection, EmployeeSource employeeSource)
+        public EmployeeCollection FetchEmployees(FakeSqlConnection connection)
         {
             string query = "select * from employee, employee_role inner join employee.Id == employee_role.EmployeeId";
 

@@ -11,10 +11,22 @@ namespace designIssueExample
             FakeSqlConnection connection = new FakeSqlConnection();
             var employeeSource = new EmployeeSource(connection);
 
+            FilterEmployeesAndWriteToConsoleProcedural(employeeSource, employeeFilter);
+            FilterEmployeesAndWriteToConsolePipeline(employeeSource, employeeFilter);
+        }
+
+        private static void FilterEmployeesAndWriteToConsoleProcedural(EmployeeSource employeeSource, EmployeeFilter employeeFilter)
+        {
             var collection = employeeSource.FetchEmployees().Filter(employeeFilter.Matches);
 
             WriteToConsole(collection);
-
+        }
+        private static void FilterEmployeesAndWriteToConsolePipeline(EmployeeSource employeeSource, EmployeeFilter employeeFilter)
+        {
+            Pipeline.Process(
+                employeeSource.FetchEmployees,
+                (employeeCollection) => employeeCollection.Filter(employeeFilter.Matches),
+                WriteToConsole);
         }
 
         private static void WriteToConsole(EmployeeCollection collection)

@@ -21,11 +21,12 @@ namespace designIssueExample
 
             WriteToConsole(collection);
         }
+
         private static void FilterEmployeesAndWriteToConsolePipeline(EmployeeSource employeeSource, EmployeeFilter employeeFilter)
         {
             Pipeline.Process(
                 employeeSource.FetchEmployees,
-                (employeeCollection) => employeeCollection.Filter(employeeFilter.Matches),
+                employeeFilter.Filter,
                 WriteToConsole);
         }
 

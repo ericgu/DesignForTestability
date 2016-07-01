@@ -30,5 +30,10 @@ namespace designIssueExample
             }
             return true;
         }
+
+        public EmployeeCollection Filter(EmployeeCollection employeeCollection)
+        {
+            return employeeCollection.Filter(Matches);
+        }
     }
 }

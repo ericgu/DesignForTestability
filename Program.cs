@@ -13,11 +13,16 @@ namespace designIssueExample
 
             var collection = employeeSource.FetchEmployees().Filter(employeeFilter.Matches);
 
+            WriteToConsole(collection);
+
+        }
+
+        private static void WriteToConsole(EmployeeCollection collection)
+        {
             foreach (Employee employee in collection.Items)
             {
                 Console.WriteLine(employee);
             }
-
         }
     }
 }

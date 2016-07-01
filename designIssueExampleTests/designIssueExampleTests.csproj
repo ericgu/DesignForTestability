@@ -51,7 +51,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="EmployeeCollection_Tests.cs" />
-    <Compile Include="EmployeeFilter_Tests.cs" />
+    <Compile Include="EmployeeFilter_Tests - Copy.cs" />
+    <Compile Include="Pipeline_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

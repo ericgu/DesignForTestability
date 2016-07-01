@@ -47,6 +47,7 @@
     <Compile Include="EmployeeFilterType.cs" />
     <Compile Include="EmployeeSource.cs" />
     <Compile Include="FakeSql.cs" />
+    <Compile Include="Pipeline.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using designIssueExample;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -62,6 +63,22 @@ namespace designIssueExampleTests
             EmployeeFilter employeeFilter = new EmployeeFilter(EmployeeFilterType.ExemptOnly, null);
 
             Assert.IsTrue(employeeFilter.Matches(CreateEmployee("Alan", 40, true)));
+        }
+
+        [TestMethod]
+        public void When_I_create_a_named_filter_and_filter_a_collection__It_returns_the_matching_employees()
+        {
+            EmployeeFilter employeeFilter = new EmployeeFilter(EmployeeFilterType.ByName, "A");
+
+            EmployeeCollection employees = new EmployeeCollection();
+            employees.Add(CreateEmployee("Fred", 42, false));
+            employees.Add(CreateEmployee("Alan", 42, false));
+            employees.Add(CreateEmployee("Zelda", 42, false));
+
+            var filtered = employeeFilter.Filter(employees);
+
+            Assert.AreEqual(1, filtered.Items.Count);
+            Assert.AreEqual("Alan", filtered.Items.First().Name);
         }
     }
 }

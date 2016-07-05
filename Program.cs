@@ -24,10 +24,10 @@ namespace designIssueExample
 
         private static void FilterEmployeesAndWriteToConsolePipeline(EmployeeSource employeeSource, EmployeeFilter employeeFilter)
         {
-Pipeline.Process(
-    employeeSource.FetchEmployees,
-    employeeFilter.Filter,
-    WriteToConsole);
+            Pipeline.Process(
+                employeeSource.FetchEmployees,
+                employeeFilter.Filter,
+                WriteToConsole);
         }
 
         private static void WriteToConsole(EmployeeCollection collection)
